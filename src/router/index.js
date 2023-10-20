@@ -17,6 +17,12 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404',
+    component: () =>
+      import(/* webpackChunkName: "home" */ '@/views/Error/404.vue'),
+  },
 ];
 
 const router = createRouter({

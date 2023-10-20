@@ -7,10 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ErrorHeader: typeof import('./src/components/ErrorHeader.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     NavbarThemeSwitcher: typeof import('./src/layouts/components/NavbarThemeSwitcher.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    ThemeSwitcher: typeof import('./src/components/theme/ThemeSwitcher.vue')['default']
+    ThemeSwitcher: typeof import('./src/components/ThemeSwitcher.vue')['default']
   }
 }
