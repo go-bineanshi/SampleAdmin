@@ -86,11 +86,18 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@apis': fileURLToPath(new URL('./src/api', import.meta.url)),
     },
     extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
   },
   build: {
     chunkSizeWarningLimit: 5000,
   },
-  server: {},
+  server: {
+    '/api': {
+      target: 'http://localhost:8888/api',
+      ws: false,
+      changeOrigin: true,
+    },
+  },
 });
