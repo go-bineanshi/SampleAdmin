@@ -10,6 +10,8 @@ import { fileURLToPath, URL } from 'node:url';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 
+import SvgLoader from 'vite-svg-loader';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -26,6 +28,24 @@ export default defineConfig({
     Components({
       dirs: ['src/components', 'src/layouts/components'],
       dts: true,
+    }),
+    SvgLoader({
+      svgoConfig: {
+        plugins: [
+          'cleanupEnableBackground',
+          'removeDoctype',
+          'removeMetadata',
+          'removeComments',
+          'removeXMLNS',
+          'removeXMLProcInst',
+          'sortDefsChildren',
+          'convertTransform',
+          {
+            name: 'addClassesToSVGElement',
+            params: { className: 'v-icon__svg' },
+          },
+        ],
+      },
     }),
     AutoImport({
       eslintrc: {
