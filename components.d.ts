@@ -7,8 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppNotification: typeof import('./src/components/notification/AppNotification.vue')['default']
+    AppNotificationItem: typeof import('./src/components/notification/AppNotificationItem.vue')['default']
     ErrorHeader: typeof import('./src/components/ErrorHeader.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    NavbarLinkTo: typeof import('./src/layouts/components/NavbarLinkTo.vue')['default']
     NavbarThemeSwitcher: typeof import('./src/layouts/components/NavbarThemeSwitcher.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

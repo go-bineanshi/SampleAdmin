@@ -3,6 +3,24 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
+    path: '/auth',
+    component: () => import('@/layouts/blank'),
+    children: [
+      {
+        path: '',
+        name: 'Login',
+        component: () =>
+          import(/* webpackChunkName: "home" */ '@/views/Auth/Login.vue'),
+      },
+      {
+        path: 'register',
+        name: 'Register',
+        component: () =>
+          import(/* webpackChunkName: "home" */ '@/views/Auth/Register.vue'),
+      },
+    ],
+  },
+  {
     path: '/',
     component: () => import('@/layouts/default/Default.vue'),
     children: [
