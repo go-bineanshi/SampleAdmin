@@ -127,7 +127,7 @@ const isPasswordVisible = ref(false);
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .auth-wrapper {
   min-block-size: calc(var(--vh, 1vh) * 100);
 }
