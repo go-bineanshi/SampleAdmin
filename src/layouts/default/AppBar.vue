@@ -5,9 +5,10 @@
 
       Essentials Preset
     </v-app-bar-title>
+    <navbar-theme-switcher />
   </v-app-bar>
 </template>
 
 <script setup>
-  //
+//
 </script>

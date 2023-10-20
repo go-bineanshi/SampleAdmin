@@ -300,6 +300,11 @@
     "watchThrottled": true,
     "watchTriggerable": true,
     "watchWithFilter": true,
-    "whenever": true
+    "whenever": true,
+    "useDisplay": true,
+    "useLayout": true,
+    "useLocale": true,
+    "useRtl": true,
+    "useTheme": true
   }
 }

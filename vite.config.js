@@ -24,7 +24,7 @@ export default defineConfig({
       },
     }),
     Components({
-      dirs: ['src/components'],
+      dirs: ['src/components', 'src/layouts/components'],
       dts: true,
     }),
     AutoImport({
@@ -32,7 +32,21 @@ export default defineConfig({
         enabled: true,
         filepath: './.eslintrc-auto-import.json',
       },
-      imports: ['vue', 'vue-router', '@vueuse/core', 'pinia'],
+      imports: [
+        'vue',
+        'vue-router',
+        '@vueuse/core',
+        'pinia',
+        {
+          vuetify: [
+            'useTheme',
+            'useRtl',
+            'useLocale',
+            'useDisplay',
+            'useLayout',
+          ],
+        },
+      ],
       vueTemplate: true,
       dts: 'src/auto-imports.d.ts',
       dirs: ['src/store/modules'],
