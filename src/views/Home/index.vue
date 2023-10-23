@@ -1,8 +1,4 @@
-<script setup>
-import navlink from './components/navlink.vue';
-const appStore = useAppStore();
-const { user } = storeToRefs(appStore);
-</script>
+<script setup></script>
 
 <template>
   <v-container class="fill-height">

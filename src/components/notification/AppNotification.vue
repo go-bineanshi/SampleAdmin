@@ -20,7 +20,7 @@ const toggleAll = () => {
   if (showAll.value) {
     timeout.value = -1;
   } else {
-    timeout.value = 5000;
+    timeout.value = 2000;
   }
 };
 
