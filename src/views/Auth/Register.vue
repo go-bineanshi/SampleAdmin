@@ -4,6 +4,7 @@ import authV1MaskDark from '@/assets/images/pages/auth-v1-mask-dark.png';
 import authV1MaskLight from '@/assets/images/pages/auth-v1-mask-light.png';
 import authV1Tree2 from '@/assets/images/pages/auth-v1-tree-2.png';
 import authV1Tree from '@/assets/images/pages/auth-v1-tree.png';
+import { authRegister } from '@/api/admin/auth';
 
 const form = ref({
   account: '',
@@ -18,6 +19,21 @@ const authThemeMask = computed(() => {
     : authV1MaskDark;
 });
 const isPasswordVisible = ref(false);
+const router = useRouter();
+const registerHandler = () => {
+  authRegister(form.value)
+    .then((res) => {
+      if (res.code == 200) {
+        Notify.success('注册成功，请登录后使用');
+        router.push({ name: 'Login' });
+      } else {
+        Notify.error(res.msg);
+      }
+    })
+    .catch((err) => {
+      Notify.error(err);
+    });
+};
 </script>
 
 <template>
@@ -96,7 +112,7 @@ const isPasswordVisible = ref(false);
               </div>
 
               <!-- login button -->
-              <v-btn block type="submit" to="/"> 注册 </v-btn>
+              <v-btn block type="submit" @click="registerHandler"> 注册 </v-btn>
             </v-col>
 
             <!-- login instead -->
