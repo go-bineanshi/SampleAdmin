@@ -6,9 +6,9 @@ import authV1Tree2 from '@/assets/images/pages/auth-v1-tree-2.png';
 import authV1Tree from '@/assets/images/pages/auth-v1-tree.png';
 
 const form = ref({
-  username: '',
-  phone: '',
+  account: '',
   password: '',
+  re_password: '',
   privacyPolicies: false,
 });
 const vuetifyTheme = useTheme();
@@ -45,11 +45,11 @@ const isPasswordVisible = ref(false);
           <v-row>
             <v-col cols="12" class="mt-2">
               <!-- account -->
-              <v-text-field v-model="form.username" label="用户名" required />
-            </v-col>
-            <v-col cols="12">
-              <!-- phone -->
-              <v-text-field v-model="form.phone" label="手机号" required />
+              <v-text-field
+                v-model="form.account"
+                label="用户名/手机号/邮箱"
+                required
+              />
             </v-col>
             <!-- password -->
             <v-col cols="12">
@@ -63,7 +63,19 @@ const isPasswordVisible = ref(false);
                 required
                 @click:append-inner="isPasswordVisible = !isPasswordVisible"
               />
-
+            </v-col>
+            <!-- password -->
+            <v-col cols="12">
+              <v-text-field
+                v-model="form.re_password"
+                label="重复密码"
+                :type="isPasswordVisible ? 'text' : 'password'"
+                :append-inner-icon="
+                  isPasswordVisible ? 'mdi-eye-off-outline' : 'mdi-eye-outline'
+                "
+                required
+                @click:append-inner="isPasswordVisible = !isPasswordVisible"
+              />
               <div class="d-flex align-center mt-1 mb-4">
                 <v-checkbox
                   id="privacy-policy"

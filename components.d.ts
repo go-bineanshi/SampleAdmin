@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppNotification: typeof import('./src/components/notification/AppNotification.vue')['default']
     AppNotificationItem: typeof import('./src/components/notification/AppNotificationItem.vue')['default']
+    AppNotificationWithOutIcon: typeof import('./src/components/notification/AppNotificationWithOutIcon.vue')['default']
     ErrorHeader: typeof import('./src/components/ErrorHeader.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     NavbarLinkTo: typeof import('./src/layouts/components/NavbarLinkTo.vue')['default']

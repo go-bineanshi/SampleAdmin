@@ -94,10 +94,12 @@ export default defineConfig({
     chunkSizeWarningLimit: 5000,
   },
   server: {
-    '/api': {
-      target: 'http://localhost:8888/api',
-      ws: false,
-      changeOrigin: true,
+    proxy: {
+      '/v1': {
+        target: 'http://127.0.0.1:8888',
+        ws: false,
+        changeOrigin: true,
+      },
     },
   },
 });

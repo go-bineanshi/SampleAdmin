@@ -4,12 +4,14 @@ import authV1MaskDark from '@/assets/images/pages/auth-v1-mask-dark.png';
 import authV1MaskLight from '@/assets/images/pages/auth-v1-mask-light.png';
 import authV1Tree2 from '@/assets/images/pages/auth-v1-tree-2.png';
 import authV1Tree from '@/assets/images/pages/auth-v1-tree.png';
-
+const { handleLogin } = useAppStore();
 const form = ref({
   account: '',
   password: '',
   remember: false,
 });
+const router = useRouter();
+const route = useRoute();
 const vuetifyTheme = useTheme();
 const authThemeMask = computed(() => {
   return vuetifyTheme.global.name.value === 'light'
@@ -17,6 +19,20 @@ const authThemeMask = computed(() => {
     : authV1MaskDark;
 });
 const isPasswordVisible = ref(false);
+const loginHandler = async () => {
+  await handleLogin(form.value)
+    .then((res) => {
+      Notify.success('欢迎登录');
+      if (route.query.redirect) {
+        router.push({ path: route.query.redirect });
+      } else {
+        router.push({ name: 'Home' });
+      }
+    })
+    .catch((err) => {
+      Notify.error(err);
+    });
+};
 </script>
 
 <template>
@@ -76,7 +92,7 @@ const isPasswordVisible = ref(false);
               </div>
 
               <!-- login button -->
-              <v-btn block type="submit" to="/"> 登录 </v-btn>
+              <v-btn block @click="loginHandler" type="submit"> 登录 </v-btn>
             </v-col>
 
             <!-- create account -->
@@ -165,3 +181,4 @@ const isPasswordVisible = ref(false);
   background-color: rgb(var(--v-theme-surface));
 }
 </style>
+@/api/admin/auth

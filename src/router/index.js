@@ -32,6 +32,14 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home'),
       },
+      {
+        path: 'demo',
+        name: 'Demo',
+        component: () => import(/* webpackChunkName: "home" */ '@/views/Demo'),
+        meta: {
+          title: '测试页面',
+        },
+      },
     ],
   },
   {

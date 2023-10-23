@@ -305,6 +305,8 @@
     "useLayout": true,
     "useLocale": true,
     "useRtl": true,
-    "useTheme": true
+    "useTheme": true,
+    "Notify": true,
+    "useNotificationStore": true
   }
 }

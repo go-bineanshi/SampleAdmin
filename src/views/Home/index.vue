@@ -1,11 +1,13 @@
 <script setup>
 import navlink from './components/navlink.vue';
+const appStore = useAppStore();
+const { user } = storeToRefs(appStore);
 </script>
 
 <template>
   <v-container class="fill-height">
     <v-responsive class="align-center text-center fill-height">
-      <h1 class="text-h2 font-weight-bold">Vuetify</h1>
+      <h1 class="text-h2 font-weight-bold">{{ user }}</h1>
       <div class="py-14" />
       <v-row class="d-flex align-center justify-center">
         <v-col cols="auto">

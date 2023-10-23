@@ -1,7 +1,7 @@
 // 引入axios
 import axios from 'axios';
 // 引入qs模块，对数据进行序列化
-import QS from 'qs';
+// import QS from 'qs';
 
 const instace = axios.create({
   baseURL: import.meta.env.VITE_API_URL, //默认配置(这里不要用process.env,个人百度这个在vite中被废弃掉了,属性名必须以VITE_API_开头,否则 import.meta.env检测不到)
@@ -11,10 +11,12 @@ const instace = axios.create({
 // 请求拦截器
 instace.interceptors.request.use(
   (config) => {
+    const appStore = useAppStore();
+    const { token } = storeToRefs(appStore);
     // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
     // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
     // const token = userStore.token;
-    // token && (config.headers.Token = token);
+    token && (config.headers.Authorization = `Bearer ${token.value}`);
     if (config.method.toUpperCase() === 'POST') {
       config.headers['Content-Type'] = 'application/json;charset=utf-8';
     }
@@ -79,7 +81,7 @@ export function get(url, params) {
 export function post(url, params) {
   return new Promise((resolve, reject) => {
     axios
-      .post(url, QS.stringify(params))
+      .post(url, params)
       .then((res) => {
         resolve(res.data);
       })
